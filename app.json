@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "codigoconsumidorfacil",
+    "slug": "codigoconsumidorfacil",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
