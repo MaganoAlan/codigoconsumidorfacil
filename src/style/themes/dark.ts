@@ -32,8 +32,8 @@ export const DARK = extendTheme({
     white: "#FFFFFF",
   },
   fonts: {
-    heading: "Roboto_700Bold",
-    body: "Roboto_400Regular",
+    heading: "",
+    body: "",
   },
   fontSizes: {
     xs: 12,

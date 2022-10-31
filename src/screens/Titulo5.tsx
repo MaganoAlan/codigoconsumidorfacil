@@ -3,9 +3,9 @@ import { VStack, Text, ScrollView, View } from "native-base";
 import { Header } from "../components/Header";
 import { Title } from "../components/Title";
 
-const titulo1 = require("../data/titulos/titulo1.json");
+const titulo5 = require("../data/titulos/titulo5.json");
 
-export function Articles() {
+export function Titulo5() {
   useEffect(() => {
     
   });
@@ -14,8 +14,8 @@ export function Articles() {
       <Header title="Listagem dos artigos" />
       <Title title="Artigos" mt={2} />
       <ScrollView>
-        <Text py={6}>{titulo1.map((t) => t.titulo)}</Text>
-        {titulo1.map((item, index) => (
+        <Text py={6}>{titulo5.map((t) => t.titulo)}</Text>
+        {titulo5.map((item, index) => (
           <View px={4} key={index}>
             {
               <Text color="red.800"  textAlign="justify">

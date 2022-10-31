@@ -8,6 +8,11 @@ import { Home } from "../screens/Home";
 import { toDarkTheme, toLightTheme } from "../store/Theme.store";
 
 import { IThemeState } from "../types/IThemeState";
+import { Titulo2 } from "../screens/Titulo2";
+import { Titulo3 } from "../screens/Titulo3";
+import { Titulo4 } from "../screens/Titulo4";
+import { Titulo5 } from "../screens/Titulo5";
+import { Titulo6 } from "../screens/Titulo6";
 
 const Drawer = createDrawerNavigator();
 
@@ -51,8 +56,33 @@ export function DrawerNavigator() {
           }}
         />
         <Drawer.Screen
-          name="artigos"
+          name="Titulo 1"
           component={Articles}
+          options={{ headerShown: false }}
+        />
+        <Drawer.Screen
+          name="Titulo 2"
+          component={Titulo2}
+          options={{ headerShown: false }}
+        />
+        <Drawer.Screen
+          name="Titulo 3"
+          component={Titulo3}
+          options={{ headerShown: false }}
+        />
+        <Drawer.Screen
+          name="Titulo 4"
+          component={Titulo4}
+          options={{ headerShown: false }}
+        />
+        <Drawer.Screen
+          name="Titulo 5"
+          component={Titulo5}
+          options={{ headerShown: false }}
+        />
+        <Drawer.Screen
+          name="Titulo 6"
+          component={Titulo6}
           options={{ headerShown: false }}
         />
       </Drawer.Navigator>
