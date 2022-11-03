@@ -14,6 +14,7 @@ import { Titulo4 } from "../screens/Titulo4";
 import { Titulo5 } from "../screens/Titulo5";
 import { Titulo6 } from "../screens/Titulo6";
 
+
 const Drawer = createDrawerNavigator();
 
 export function DrawerNavigator() {
