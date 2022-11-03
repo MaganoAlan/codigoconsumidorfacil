@@ -6,9 +6,7 @@ import { Title } from "../components/Title";
 const titulo1 = require("../data/titulos/titulo1.json");
 
 export function Articles() {
-  useEffect(() => {
-    
-  });
+  useEffect(() => {});
   return (
     <VStack w="full" flex={1} bgColor="background">
       <Header title="Listagem dos artigos" />
@@ -18,7 +16,7 @@ export function Articles() {
         {titulo1.map((item, index) => (
           <View px={4} key={index}>
             {
-              <Text color="red.800"  textAlign="justify">
+              <Text color="red.800" textAlign="justify">
                 {item.capitulo}
               </Text>
             }

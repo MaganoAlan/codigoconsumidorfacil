@@ -13,7 +13,7 @@ import { Titulo3 } from "../screens/Titulo3";
 import { Titulo4 } from "../screens/Titulo4";
 import { Titulo5 } from "../screens/Titulo5";
 import { Titulo6 } from "../screens/Titulo6";
-
+import { EpubTest } from "../screens/EpubTest";
 
 const Drawer = createDrawerNavigator();
 
@@ -84,6 +84,11 @@ export function DrawerNavigator() {
         <Drawer.Screen
           name="Titulo 6"
           component={Titulo6}
+          options={{ headerShown: false }}
+        />
+        <Drawer.Screen
+          name="Teste do epub-rn"
+          component={EpubTest}
           options={{ headerShown: false }}
         />
       </Drawer.Navigator>
