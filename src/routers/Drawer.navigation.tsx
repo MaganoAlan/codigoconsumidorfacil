@@ -7,7 +7,7 @@ import { Home } from "../screens/Home";
 import { toDarkTheme, toLightTheme } from "../store/Theme.store";
 import { IThemeState } from "../types/IThemeState";
 import { EpubTest } from "../screens/EpubTest";
-import { Capa } from '../screens/Capa';
+import { Capa } from "../screens/Capa";
 
 
 const Drawer = createDrawerNavigator();
