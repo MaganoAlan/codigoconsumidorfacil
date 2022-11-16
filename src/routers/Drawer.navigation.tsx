@@ -7,6 +7,8 @@ import { Home } from "../screens/Home";
 import { toDarkTheme, toLightTheme } from "../store/Theme.store";
 import { IThemeState } from "../types/IThemeState";
 import { EpubTest } from "../screens/EpubTest";
+import { Capa } from '../screens/Capa';
+
 
 const Drawer = createDrawerNavigator();
 
@@ -26,7 +28,12 @@ export function DrawerNavigator() {
 
   return (
     <NativeBaseProvider theme={selected}>
-      <Drawer.Navigator initialRouteName="home">
+      <Drawer.Navigator initialRouteName="capa">
+      <Drawer.Screen
+          name="Capa"
+          component={Capa}
+          options={{ headerShown: true }}
+        />
         <Drawer.Screen
           name="home"
           component={Home}
