@@ -2,7 +2,6 @@ import { HStack, Heading, IconButton } from "native-base";
 import { ArrowUUpLeft } from "phosphor-react-native";
 import { useNavigation } from "@react-navigation/native";
 
-
 type Props = {
   title: string;
 };

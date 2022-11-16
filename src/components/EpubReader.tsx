@@ -12,26 +12,37 @@ import { useWindowDimensions } from "react-native";
 import { Reader, useReader } from "@epubjs-react-native/core";
 import { useFileSystem } from "@epubjs-react-native/expo-file-system";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { sepia, unset } from "../style/readerTheme";
+import { sepia, unset, dark } from "../style/readerTheme";
 import {
   ArrowCircleLeft,
   CaretLeft,
   CaretRight,
+  MagnifyingGlass,
   SunHorizon,
   TextAa,
 } from "phosphor-react-native";
 import { useNavigation } from "@react-navigation/native";
+import { SearchModal } from "./SearchModal";
 
 export function EpubReader() {
   const navigation = useNavigation();
   const { width, height } = useWindowDimensions();
-  const { goNext, goPrevious, changeTheme, changeFontSize, search }: any =
-    useReader();
+  const {
+    goNext,
+    goPrevious,
+    changeTheme,
+    changeFontSize,
+    search,
+    searchResults,
+    goToLocation,
+  }: any = useReader();
 
   const [lastLocation, setLastLocation] = useState("");
   const [read, setRead] = useState("");
   const [readMode, setReadMode] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const [isSearch, setIsSearch] = useState(false);
+  const [searchText, setSearchText] = useState("");
   const [pages, setPages] = useState<any>();
 
   const sm = "14px";
@@ -67,7 +78,7 @@ export function EpubReader() {
 
   useEffect(() => {
     if (readMode) {
-      changeTheme(sepia);
+      changeTheme(dark);
       return;
     }
     changeTheme(unset);
@@ -75,9 +86,13 @@ export function EpubReader() {
 
   useEffect(() => {
     changeFontSize(fontS);
-    const response = search("a");
-    console.log("response", response);
   }, [fontS]);
+
+  const moby = "https://s3.amazonaws.com/moby-dick/OPS/package.opf";
+
+  function handleSearch() {
+    search(searchText);
+  }
 
   return (
     <VStack w="full" flex={1}>
@@ -116,17 +131,30 @@ export function EpubReader() {
           </Radio.Group>
         </Modal.Content>
       </Modal>
+      <SearchModal
+        isVisible={isSearch}
+        setIsVisible={() => setIsSearch(!isSearch)}
+        value={searchText}
+        onChange={setSearchText}
+        onSearch={handleSearch}
+        results={searchResults}
+        goToLocation={goToLocation}
+      />
       <HStack justifyContent="space-between" alignItems="center">
         <IconButton
           onPress={() => navigation.goBack()}
           icon={<ArrowCircleLeft size={32} color="#000" />}
         />
-        <HStack alignItems="center">
-          <IconButton
-            onPress={() => setIsVisible(true)}
-            icon={<TextAa size={26} color="#000" />}
-          />
-        </HStack>
+
+        <IconButton
+          onPress={() => setIsVisible(true)}
+          icon={<TextAa size={26} color="#000" />}
+        />
+        <IconButton
+          onPress={() => setIsSearch(true)}
+          icon={<MagnifyingGlass size={26} color="#000" />}
+        />
+
         <IconButton
           onPress={() => setReadMode(!readMode)}
           icon={<SunHorizon size={32} color="#000" />}
@@ -134,7 +162,7 @@ export function EpubReader() {
       </HStack>
       <ScrollView>
         <Reader
-          src="https://s3.amazonaws.com/moby-dick/OPS/package.opf"
+          src="https://firebasestorage.googleapis.com/v0/b/studio-fitness-piratini.appspot.com/o/avalia%C3%A7%C3%B5es%2F1867%2Fteste%2Fcdc_epub.epub?alt=media&token=ace946fb-7fe2-4a16-87d3-36a37b39c7f1"
           initialLocation={lastLocation}
           width={width}
           height={height - 100}
@@ -161,7 +189,7 @@ export function EpubReader() {
         <Text>
           {pages && pages.page} de {pages && pages.total} neste capítulo
         </Text>
-        <Text>{Math.fround(parseFloat(read)).toFixed(2)}%</Text>
+        <Text>{pages && ((pages.page / pages.total) * 100).toFixed(2)}%</Text>
         <IconButton
           onPress={() => goNext()}
           icon={<CaretRight size={32} color="#000" />}

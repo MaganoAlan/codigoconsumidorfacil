@@ -41,17 +41,17 @@ const dark: Theme = {
     background: "#333",
   },
   span: {
-    color: "#fdfdfd !important",
+    color: "#c2c2c2 !important",
   },
   p: {
-    color: "#fdfdfd !important",
+    color: "#c2c2c2 !important",
   },
   li: {
-    color: "#fdfdfd !important",
+    color: "#c2c2c2 !important",
   },
   h1: {
-    color: "#fdfdfd !important",
+    color: "#c2c2c2 !important",
   },
 };
 
-export { sepia, unset };
+export { sepia, unset, dark };
